@@ -1,0 +1,8 @@
+Flask
+requests
+gunicorn
+sqlalchemy
+flask-SQLALchemy
+pymysql
+apscheduler
+flask-login
