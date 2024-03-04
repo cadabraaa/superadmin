@@ -11,8 +11,8 @@
       id="company_code"
       name="company_code"
       placeholder="Enter Company Code"
-      pattern="[A-Z]{4}"
-      title="Company code must be 4 capital letters."
+      pattern="[A-Z]{3}"
+      title="Company code must be 3 capital letters."
       value="{{ request.form['company_code'] if 'company_code' in request.form else '' }}"
       required
       />
@@ -100,4 +100,5 @@
   <br />
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>
+</br>
 {% endblock %}
