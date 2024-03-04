@@ -4,74 +4,97 @@
 <form method="POST">
   <h3 align ="center">Sign Up</h3>
   <div class="form-group">
-    <label for="company_code" >Company Code</label>
+    <label for="company_code">Company Code</label>
     <input
       type="text"
       class="form-control"
-      id ="company_code"
+      id="company_code"
       name="company_code"
       placeholder="Enter Company Code"
+      pattern="[A-Z]{4}"
+      title="Company code must be 4 capital letters."
+      value="{{ request.form['company_code'] if 'company_code' in request.form else '' }}"
+      required
       />
   </div>
   <div class="form-group">
-    <label for="company_name" >Company Name</label>
+    <label for="company_name">Company Name</label>
     <input
       type="text"
       class="form-control"
-      id ="company_name"
+      id="company_name"
       name="company_name"
       placeholder="Enter Company Name"
+      value="{{ request.form['company_name'] if 'company_name' in request.form else '' }}"
+      required
       />
   </div>
   <div class="form-group">
-    <label for="establishment_year" >Establishment Year</label>
-    <input
-      type="year"
-      class="form-control"
-      id ="establishment_year"
-      name="establishment_year"
-      placeholder="Enter Establishment Year"
-      />
-  </div>
-  <div class="form-group">
-    <label for="mobile" >Mobile</label>
+    <label for="establishment_year">Establishment Year</label>
     <input
       type="text"
       class="form-control"
-      id ="mobile"
+      id="establishment_year"
+      name="establishment_year"
+      placeholder="Enter Establishment Year"
+      pattern="[0-9]{4}"
+      title="Establishment year must be a 4-digit number."
+      value="{{ request.form['establishment_year'] if 'establishment_year' in request.form else '' }}"
+      required
+      />
+  </div>
+  <div class="form-group">
+    <label for="mobile">Mobile</label>
+    <input
+      type="text"
+      class="form-control"
+      id="mobile"
       name="mobile"
       placeholder="Enter mobile number"
+      pattern="[0-9]{10}"
+      title="Mobile number must be 10 digits and contain only numbers."
+      value="{{ request.form['mobile'] if 'mobile' in request.form else '' }}"
+      required
       />
   </div>
   <div class="form-group">
-    <label for="email" >Email Address</label>
-    <input
-      type="email"
-      class="form-control"
-      id ="email"
-      name="email"
-      placeholder="Enter email"
+      <label for="email">Email Address</label>
+      <input
+        type="email"
+        class="form-control"
+        id="email"
+        name="email"
+        placeholder="Enter email"
+        pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}"
+        title="Please enter a valid email address"
+        value="{{ request.form['email'] if 'email' in request.form else '' }}"
+        required
       />
   </div>
-
   <div class="form-group">
-    <label for="password" >Password</label>
+    <label for="password">Password</label>
     <input
       type="password"
       class="form-control"
-      id ="password1"
+      id="password1"
       name="password1"
       placeholder="Enter password"
+      minlength="8"
+      value="{{ request.form['password1'] if 'password1' in request.form else '' }}"
+      required
       />
   </div>
   <div class="form-group">
-    <label for="password2" >Confirm Password</label>
+    <label for="password2">Confirm Password</label>
     <input
       type="password"
       class="form-control"
-      id ="password2"
+      id="password2"
       name="password2"
       placeholder="Confirm password"
+      minlength="8"
+      value="{{ request.form['password2'] if 'password' in request.form else '' }}"
+      required
       />
   </div>
   <br />
