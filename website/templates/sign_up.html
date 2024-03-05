@@ -58,18 +58,18 @@
       />
   </div>
   <div class="form-group">
-      <label for="email">Email Address</label>
-      <input
-        type="email"
-        class="form-control"
-        id="email"
-        name="email"
-        placeholder="Enter email"
-        pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}"
-        title="Please enter a valid email address"
-        value="{{ request.form['email'] if 'email' in request.form else '' }}"
-        required
-      />
+    <label for="email">Email Address</label>
+    <input
+      type="email"
+      class="form-control"
+      id="email"
+      name="email"
+      placeholder="Enter email"
+      pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}"
+      title="Please enter a valid email address in the format yourname@example.com"
+      value="{{ request.form['email'] if 'email' in request.form else '' }}"
+      required
+    />
   </div>
   <div class="form-group">
     <label for="password">Password</label>
@@ -101,4 +101,37 @@
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>
 </br>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    var password1 = document.getElementById("password1");
+    var password2 = document.getElementById("password2");
+
+    function validatePassword() {
+      if (password1.value !== password2.value) {
+        password2.setCustomValidity("Passwords do not match");
+      } else {
+        password2.setCustomValidity("");
+      }
+    }
+
+    password1.addEventListener("input", validatePassword);
+    password2.addEventListener("input", validatePassword);
+  });
+</script>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    var establishmentYearInput = document.getElementById("establishment_year");
+
+    establishmentYearInput.addEventListener("input", function() {
+      var currentYear = new Date().getFullYear();
+      var inputYear = parseInt(establishmentYearInput.value, 10);
+
+      if (inputYear > currentYear) {
+        establishmentYearInput.setCustomValidity("Establishment year cannot be in the future.");
+      } else {
+        establishmentYearInput.setCustomValidity("");
+      }
+    });
+  });
+</script>
 {% endblock %}

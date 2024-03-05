@@ -26,10 +26,6 @@ def sign_up():
       flash('Email already exists.', category='error')
     elif c_code:
         flash('The company code already exists.', category='error')
-    elif not re.match(r"[^@]+@[^@]+\.[^@]+", email):
-      flash('Email is not valid.', category='error')
-    elif password1 != password2:
-      flash('Passwords don\'t match.', category='error')
     else:
       new_user = User(email=email,
                       company_code=company_code,
